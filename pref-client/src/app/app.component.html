@@ -1,40 +1,62 @@
-<!-- app.component.html -->
-<div class="container text-center">
+<div style="text-align:center">
+  <h1 class="title">
+    PFE Project
+  </h1>
+</div>
+<div style="padding-left: 20px;">
+  <button mat-raised-button color="primary" (click)="onAddButtonClickHandler()">Add Client</button>
+</div>
 
-  <button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Row</button>
-
-  <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+<div style="padding: 20px;">
+  <table mat-table [dataSource]="dataSource"  #table class="mat-elevation-z8">
+    <!-- CIN Column -->
+    <ng-container matColumnDef="CIN">
+      <th mat-header-cell *matHeaderCellDef> CIN </th>
+      <td mat-cell *matCellDef="let client"> {{client.CIN}} </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <!-- First Name Column -->
+    <ng-container matColumnDef="FirstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let client"> {{ client.FirstName }} </td>
     </ng-container>
 
-    <!-- Action Column -->
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef> Action </th>
-      <td mat-cell *matCellDef="let element" class="action-link"> 
-        <a (click)="openDialog('Update',element)">Edit</a> | 
-        <a (click)="openDialog('Delete',element)">Delete</a>  
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="LastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let client"> {{client.LastName}} </td>
+    </ng-container>
+
+    <!-- PhoneNumber Column -->
+    <ng-container matColumnDef="PhoneNumber">
+      <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+      <td mat-cell *matCellDef="let client"> {{client.PhoneNumber}} </td>
+    </ng-container>
+
+    <!-- Email Column-->
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let client"> {{client.Email}} </td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let client">
+          <button mat-button color="primary" (click)="onEditButtonClickHandler(client)">Edit</button>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let client">
+          <button mat-button color="warn" (click)="onDeleteButtonClickHandler(client)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
   </table>
 
 </div>
-
-
-
-<router-outlet></router-outlet>

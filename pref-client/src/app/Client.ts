@@ -1,8 +1,9 @@
 export class Client {
-    _id: String;
-    CIN: Number;
-    FirstName: String;
-    LastName: String;
-    PhoneNumber: String;
-    Email: String;
+  // tslint:disable-next-line:ban-types
+    _id: string;
+    CIN: number;
+    FirstName: string;
+    LastName: string;
+    PhoneNumber: string;
+    Email: string;
 }
