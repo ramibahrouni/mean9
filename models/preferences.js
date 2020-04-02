@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var ClientSchema = new mongoose.Schema({
-    id: Number,
+    id: String,
     CIN: Number,
     FirstName: String,
     LastName: String,
