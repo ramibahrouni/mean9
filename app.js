@@ -7,7 +7,7 @@ var cors = require('cors');
 var clientsRouter = require('./routes/preferences');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/testDB', {
+mongoose.connect('mongodb+srv://rami:20254641+Rami@pfe-jbn2g.mongodb.net/test?retryWrites=true&w=majority', {
     promiseLibrary: require('bluebird'),
     useNewUrlParser: true,
     useUnifiedTopology: true,
